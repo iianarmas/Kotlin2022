@@ -9,7 +9,7 @@ fun main() {
 
 }
 
-=================================
+// =================================
 var a = 12
 var b = 10
 
@@ -20,5 +20,15 @@ fun main() {
     } else {
         b
     }
+    println(min)
+}
+
+
+// =================================
+var a = 12
+var b = 10
+
+fun main() {
+    var min: Int = if (a < b) a else b
     println(min)
 }
