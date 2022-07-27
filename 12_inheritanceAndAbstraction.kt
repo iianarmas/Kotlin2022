@@ -1,4 +1,4 @@
-open class Animal {
+abstract class Animal {             // once this is abstracted, no need to declare that it is open
     open val image = ""
     open val food = ""
     open val habitat = ""
@@ -35,7 +35,7 @@ class Hippo: Animal() {
     }
 }
 
-open class Canine: Animal() {
+abstract class Canine: Animal() {
     override fun roam() {
         println("The Canine is Roaming")
     }
@@ -61,8 +61,8 @@ fun main() {
     myWolf.roam()
     myWolf.sleep()
 
-    val animal = Animal()
-    giveShot(animal)
+    //val animal = Animal()   -- cannot create instance of an abstract class
+    giveShot(myWolf)
 
 }
 
