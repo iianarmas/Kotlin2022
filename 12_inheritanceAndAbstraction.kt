@@ -1,16 +1,11 @@
 abstract class Animal {             // once this is abstracted, no need to declare that it is open
-    open val image = ""
-    open val food = ""
-    open val habitat = ""
+    abstract val image: String
+    abstract val food: String
+    abstract val habitat: String
     var hunger = 10
 
-    open fun makeNoise() {
-        println("The Animal is making a noise")
-    }
-
-    open fun eat() {
-        println("The Animal is eating")
-    }
+    abstract fun makeNoise()    // no need for curly braces
+    abstract fun eat()
 
     open fun roam() {
         println("The Animal is roaming")
@@ -64,9 +59,33 @@ fun main() {
     //val animal = Animal()   -- cannot create instance of an abstract class
     giveShot(myWolf)
 
+    val animals = arrayOf(Hippo(), Wolf())
+    for (item in animals) {
+        item.roam()
+    }
+    val vehicle = Vehicle()
+    vehicle.roam()
 }
 
 fun giveShot(animal: Animal) {
     animal.hunger
     animal.makeNoise()
+}
+
+interface Roamable {
+    var velocity: Int
+        get() = 20
+        set(value) {
+            println("Unable to update velocity")
+        }
+    fun roam() {
+        println("The Roamable is roaming.")
+    }
+}
+
+class Vehicle : Roamable {
+    override fun roam() {
+        super<Roamable>.roam()
+        println("The Vehicle is roaming.")
+    }
 }
